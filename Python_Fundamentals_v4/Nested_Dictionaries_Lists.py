@@ -21,15 +21,15 @@ print(sports_directory)
 
 # Iterate Through a List of Dictionaries
 students = [
-         {'first_name':  'Michael', 'last_name' : 'Jordan'},
-         {'first_name' : 'John', 'last_name' : 'Rosales'},
-         {'first_name' : 'Mark', 'last_name' : 'Guillen'},
-         {'first_name' : 'KB', 'last_name' : 'Tonel'}
+         {'first_name':  'Michael,', ' last_name' : 'Jordan\n'},
+         {'first_name' : 'John,', ' last_name' : 'Rosales\n'},
+         {'first_name' : 'Mark,', ' last_name' : 'Guillen\n'},
+         {'first_name' : 'KB,', ' last_name' : 'Tonel\n'}
     ]
 def iterateDictionary(studentsList):
     for index in studentsList:
         for key in index:
-            print(f'{key} - {index[key]}')
+            print(f'{key} - {index[key]}', end="")
 
 iterateDictionary(students)
 
@@ -43,6 +43,12 @@ iterateDictionary(students)
 
 
 # Get Values From a List of Dictionaries
+students = [
+         {'first_name':  'Michael', 'last_name' : 'Jordan'},
+         {'first_name' : 'John', 'last_name' : 'Rosales'},
+         {'first_name' : 'Mark', 'last_name' : 'Guillen'},
+         {'first_name' : 'KB', 'last_name' : 'Tonel'}
+    ]
 def iterateDictionary2(key_name, some_list):
     for x in range(len(some_list)):
         print(some_list[x][key_name])
