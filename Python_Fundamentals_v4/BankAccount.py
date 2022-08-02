@@ -7,10 +7,6 @@ class BankAccount:
         BankAccount.all_accounts.append(self)
         # your code here! (remember, instance attributes go here)
         # don't worry about user info here; we'll involve the User class soon
-    @classmethod
-    def print_all_accounts(cls):
-        for one_account in cls.all_accounts:
-            print(f'Interest Rate: {one_account.int_rate} Balance: {one_account.balance}')
 
     def deposit(self, amount):
         print(f'You are depositing ${amount} in your account')
@@ -31,6 +27,12 @@ class BankAccount:
         print(f'You have gained interest your account balance is now ${self.balance}')
         return self
 
+    @classmethod
+    def print_all_accounts(cls):
+        for one_account in cls.all_accounts:
+            print(f'Interest Rate: {one_account.int_rate} Balance: {one_account.balance}')
+
+            
 Jake = BankAccount(.05, 2650)
 Mike = BankAccount(.02, 736050)
 Bob = BankAccount(.12, 150)
