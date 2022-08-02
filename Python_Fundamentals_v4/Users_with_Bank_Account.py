@@ -19,6 +19,9 @@ class User:
         self.accounts['Checking'].display_account_info()
         self.accounts['Savings'].display_account_info()
         return self
+    
+    # def transfer_money(self, amount, other_user):
+    #     pass
 
 
 class BankAccount:
