@@ -24,7 +24,7 @@ class BankAccount:
         print(f'You have gained interest your account balance is now ${self.balance}')
         return self
 
-Jake = BankAccount(47, 2650)
+Jake = BankAccount(50, 2650)
 Mike = BankAccount(24, 736050)
 Bob = BankAccount(129, 150)
 
