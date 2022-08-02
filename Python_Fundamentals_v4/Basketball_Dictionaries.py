@@ -40,16 +40,22 @@ players = [
 
 
 class Player:
-    def __init__(self, name, age, position, team):
-        self.name = name
-        self.age = age
-        self.position = position
-        self.team = team
+    def __init__(self, data):
+        self.name = data['name']
+        self.age = data['age']
+        self.position = data['position']
+        self.team = data['team']
 
+    @classmethod
+    def add_players(cls, data):
+        player_objects = []
+        for dict in data:
+            player_objects.append(cls(dict))
+        return player_objects
 
-team_players = Player(players[0]["name"], players[0]["age"], players[0]["position"], players[0]["team"])
-print(f'{team_players.name} position is {team_players.position}')
-
+    def __repr__(self):
+        display = f"Player: {self.name}, {self.age} years, pos: {self.position}, team: {self.team}"
+        return display
 
 # Challenge 2: Create instances using individual player dictionaries.
 kevin = {
@@ -71,10 +77,12 @@ kyrie = {
     "team": "Brooklyn Nets"
 }
 
-player1 = Player(kevin["name"], kevin["age"], kevin["position"], kevin["team"])
-player2 = Player(jason["name"], jason["age"], jason["position"], jason["team"])
-player3 = Player(kyrie["name"], kyrie["age"], kyrie["position"], kyrie["team"])
-print(f'{player3.name} position is {player3.position}')
+player_kevin = Player(kevin)
+player_jason = Player(jason)
+player_kyrie = Player(kyrie)
+print(player_kevin)
+print(player_jason)
+print(player_kyrie)
 # Create your Player instances here!
 # player_jason = ???
 
@@ -84,6 +92,6 @@ print(f'{player3.name} position is {player3.position}')
 new_team = []
 # Write your for loop here to populate the new_team variable with Player objects.
 for index in players:
-    for key in index:
-        new_team.append(index[key])
+    player = Player(index)
+    new_team.append(player)
 print(new_team)
