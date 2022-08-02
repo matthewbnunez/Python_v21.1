@@ -44,6 +44,14 @@ class BankAccount:
         return self
 
 
+# class CheckingAccount(BankAccount):
+#     def withdraw(self, amount):
+#         return BankAccount.withdraw(self, amount)
+
+# class SavingsAccount(BankAccount):
+#     def deposit(self, amount):
+#         return BankAccount.deposit(self, amount)
+
 Matthew = User('Matthew', 'gmail')
 Jim = User('Jim', 'hotmail')
 
