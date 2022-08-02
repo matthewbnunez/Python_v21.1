@@ -65,7 +65,7 @@ dojo = {
 
 def printInfo(some_dict):
     for key in some_dict:
-        print(len(some_dict[key]), str(key))
+        print(len(some_dict[key]), str(key.upper()))
         for keys in range(len(some_dict[key])):
             print(some_dict[key][keys])
 
