@@ -54,7 +54,7 @@ class Player:
         return player_objects
 
     def __repr__(self):
-        display = f"Player: {self.name}, {self.age} years, pos: {self.position}, team: {self.team}"
+        display = f"Player: {self.name}, Years: {self.age}, Pos: {self.position}, Team: {self.team}"
         return display
 
 # Challenge 2: Create instances using individual player dictionaries.
