@@ -2,18 +2,22 @@ class User:
     def __init__(self, name, email):
         self.name = name
         self.email = email
-        self.account = BankAccount(int_rate = 0.02, balance = 0)
+        self.accounts = {
+            'Checking': BankAccount(int_rate = 0.02, balance = 0),
+            'Savings': BankAccount(int_rate = 0.05, balance = 0)
+        }
 
-    def make_deposit(self, amount):
-        self.account.deposit(amount)
+    def make_deposit(self, amount, account_type):
+        self.accounts[account_type].deposit(amount)
         return self
 
-    def make_withdraw(self, amount):
-        self.account.withdraw(amount)
+    def make_withdrawal(self, amount, account_type):
+        self.accounts[account_type].withdraw(amount)
         return self
 
     def display_user_balance(self):
-        self.account.display_account_info()
+        self.accounts['Checking'].display_account_info()
+        self.accounts['Savings'].display_account_info()
         return self
 
 
@@ -44,16 +48,8 @@ class BankAccount:
         return self
 
 
-# class CheckingAccount(BankAccount):
-#     def withdraw(self, amount):
-#         return BankAccount.withdraw(self, amount)
-
-# class SavingsAccount(BankAccount):
-#     def deposit(self, amount):
-#         return BankAccount.deposit(self, amount)
-
 Matthew = User('Matthew', 'gmail')
 Jim = User('Jim', 'hotmail')
 
-Matthew.make_deposit(100).display_user_balance()
-Jim.make_withdraw(50).display_user_balance()
+Matthew.make_deposit(100, 'Checking').display_user_balance()
+Jim.make_withdrawal(50, 'Savings').display_user_balance()
