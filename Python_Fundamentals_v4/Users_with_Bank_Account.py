@@ -16,9 +16,6 @@ class User:
         self.account.display_account_info()
         return self
 
-    
-
-
 
 class BankAccount:
     # don't forget to add some default values for these parameters!
