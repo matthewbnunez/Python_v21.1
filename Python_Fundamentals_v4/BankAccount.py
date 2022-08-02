@@ -20,13 +20,13 @@ class BankAccount:
         return self
 
     def yield_interest(self):
-        self.balance += self.balance / self.int_rate
+        self.balance += self.balance * self.int_rate
         print(f'You have gained interest your account balance is now ${self.balance}')
         return self
 
-Jake = BankAccount(50, 2650)
-Mike = BankAccount(24, 736050)
-Bob = BankAccount(129, 150)
+Jake = BankAccount(.05, 2650)
+Mike = BankAccount(.02, 736050)
+Bob = BankAccount(.12, 150)
 
 Jake.deposit(200).deposit(300).deposit(150).withdraw(50).display_account_info().yield_interest()
 Mike.deposit(13000).deposit(8000).withdraw(5000).withdraw(1000).withdraw(4000).withdraw(50000).display_account_info().yield_interest()
