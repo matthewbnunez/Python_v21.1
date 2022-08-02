@@ -64,10 +64,10 @@ dojo = {
 }
 
 def printInfo(some_dict):
-    for key in some_dict:
-        print(len(some_dict[key]), str(key.upper()))
-        for keys in range(len(some_dict[key])):
-            print(some_dict[key][keys])
+    for index in some_dict:
+        print(len(some_dict[index]), str(index.upper()))
+        for keys in range(len(some_dict[index])):
+            print(some_dict[index][keys])
 
 
 printInfo(dojo)
