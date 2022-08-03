@@ -20,8 +20,10 @@ class User:
         self.accounts['Savings'].display_account_info()
         return self
     
-    # def transfer_money(self, amount, other_user):
-    #     pass
+    # def transfer_money(self, amount,account_type, other_user):
+    #     self.accounts[account_type].withdraw(amount)
+    #     other_user[account_type].deposit(amount)
+    #     return self
 
 
 class BankAccount:
