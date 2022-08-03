@@ -1,5 +1,4 @@
-import Parent
-Ninja = Parent.Ninja
+from Parent import Ninja
 
 class Pet():
     def __init__(self, name , type , tricks):
