@@ -47,7 +47,7 @@ class Player:
         self.team = data['team']
 
     @classmethod
-    def add_players(cls, data):
+    def get_team(cls, data):
         player_objects = []
         for dict in data:
             player_objects.append(cls(dict))
@@ -95,3 +95,7 @@ for index in players:
     player = Player(index)
     new_team.append(player)
 print(new_team)
+
+
+# NINJA BONUS: Add a get_team(cls, team_list) @class method
+print(Player.get_team(players))
