@@ -12,9 +12,9 @@ def hello_world():
 def success():
     return "Dojo!"
 
-@app.route('/hello/<string:banana>/<int:num>') 
-def hello(banana, num):
-    return render_template('hello.html', banana = banana, num = num)
+@app.route('/hello/<int:num>/<string:color>') 
+def hello(color, num):
+    return render_template('index.html', num = num, color = color)
 
 @app.route('/repeat/<num>/<text>') 
 def show_user_profile(num, text):
