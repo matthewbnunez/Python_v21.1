@@ -1,13 +1,13 @@
 /* 
-  Given in an alumni interview in 2021.
-  String Encode
-  You are given a string that may contain sequences of consecutive characters.
-  Create a function to shorten a string by including the character,
-  then the number of times it appears. 
-  
-  
-  If final result is not shorter (such as "bb" => "b2" ),
-  return the original string.
+    Given in an alumni interview in 2021.
+    String Encode
+    You are given a string that may contain sequences of consecutive characters.
+    Create a function to shorten a string by including the character,
+    then the number of times it appears. 
+    
+    
+    If final result is not shorter (such as "bb" => "b2" ),
+    return the original string.
   */
 
 const str1 = "aaaabbcddd";
@@ -32,7 +32,17 @@ const expected4 = "bbcc";
  * @returns {string} The given string encoded.
  */
 function encodeStr(str) {
-    //your code here
+    let compress = '';
+    let count = 1;
+    for (let i = 0; i < str.length; i++) {
+        if (str[i] === str[i + 1]) {
+            count++;
+        } else {
+            compress += str[i] + String(count);
+            count = 1;
+        }
+    }
+    return compress.length < str.length ? compress : str;
 }
 console.log(encodeStr(str1)); // "a4b2c1d3"
 console.log(encodeStr(str2)); // ""
@@ -58,9 +68,70 @@ const expectedB = "aaabbccccccccccccdddddddddd";
  * @returns {string} The given str decoded / expanded.
  */
 //helpful built-ins : isNaN() .repeat() parseInt() 
-function decodeStr(str) {
-    //Your code here
+function encodeStr(str) {
+    let encoded = "";
+
+    for (let i = 0; i < str.length; i++) {
+        let currChar = str[i];
+        let dupeCount = 1;
+
+        while (str[i + 1] === currChar) {
+            dupeCount++;
+            i++;
+        }
+
+        if (dupeCount == 1) {
+            encoded += currChar
+        }
+        if (dupeCount == 2) {
+            encoded += currChar + currChar
+        }
+        else {
+            encoded += currChar + dupeCount;
+        }
+    }
+    return encoded;
+}
+
+
+
+
+
+function decodeStr(str = "") {
+    let decoded = "";
+    let i = 0;
+
+    while (i < str.length) {
+        // Retrieve letter at current index then increment the idx (post increment)
+        // to get to the num that comes after the char.
+        let char = str[i++];
+
+        //a23b3
+        // the num is a string so multiple digits need to be concatenated before
+        // converted to a number. '1' + '1' => '11'. 1 + 1 => 2
+        let numStr = "";
+        /* 
+        parseInt returns NaN if it fails to parse. NaN is a weird special value
+        that requires using isNaN to check b/c NaN === NaN => false.
+        */
+        let isNumber = isNaN(parseInt(str[i])) === false;
+
+        /* 
+        Iterate over all the nums that come after this string until the next
+        non-number.
+        */
+        while (i < str.length && isNumber) {
+            // concatenate the string-num digit then increment.
+            numStr += str[i++];
+            isNumber = isNaN(parseInt(str[i])) === false;
+        }
+
+        // .repeat will automatically convert numStr to a number if it can.
+        decoded += char.repeat(numStr);
+    }
+    return decoded;
 }
 
 console.log(decodeStr(strA)) // Expected: aaabbcddd
 console.log(decodeStr(strB)) // Expected: aaabbccccccccccccdddddddddd
+
