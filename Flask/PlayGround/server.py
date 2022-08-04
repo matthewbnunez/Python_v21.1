@@ -14,7 +14,7 @@ def level1():
 def level2(num):
     return render_template('index.html', num = num)
 
-@app.route('/play/<int:num>/<string:color>') 
+@app.route('/play/<int:num>/<color>') 
 def level3(color, num):
     return render_template('index.html', num = num, color = color)
 
