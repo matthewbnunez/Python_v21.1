@@ -2,18 +2,20 @@ from flask import Flask , render_template
 
 app = Flask(__name__)    
 
-@app.route('/')          
-def hello_world():
-    return render_template('index.html') 
-
-
+@app.route('/')
+def play():
+    return 'Hello World'
     
-@app.route('/dojo')
-def success():
-    return "Dojo!"
+@app.route('/play')
+def level1():
+    return render_template('index.html', num = 3)
 
-@app.route('/hello/<int:num>/<string:color>') 
-def hello(color, num):
+@app.route('/play/<int:num>') 
+def level2(num):
+    return render_template('index.html', num = num)
+
+@app.route('/play/<int:num>/<string:color>') 
+def level3(color, num):
     return render_template('index.html', num = num, color = color)
 
 @app.route('/repeat/<num>/<text>') 
