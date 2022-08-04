@@ -16,6 +16,10 @@ def success():
 def hello(banana, num):
     return render_template('hello.html', banana = banana, num = num)
 
+@app.errorhandler(404)
+def error_page(e):
+    return "my custom error page"
+
 @app.route('/repeat/<num>/<text>') 
 def show_user_profile(num, text):
     return int(num) * str(text)
