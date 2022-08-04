@@ -18,9 +18,10 @@
         border-radius: 5%;
         display: inline-block;
         margin: 25px;
+        border: 2px solid black;
     }
 
-    #box {
+    .box {
         background-color: {{ color }};
     } 
     </style>
@@ -30,7 +31,7 @@
     <h1>Welcome!</h1>
 
     {% for i in range(0, num) %}
-        <p id = box></p>
+        <p class = 'box'></p>
     {% endfor %}
 </body>
 </html>
