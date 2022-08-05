@@ -58,3 +58,4 @@ Jim = User('Jim', 'smoke@hotmail')
 
 Matthew.make_deposit(100, 'Checking').display_user_balance()
 Jim.make_withdrawal(50, 'Savings').display_user_balance()
+Matthew.make_deposit(300, 'Savings').display_user_balance()
