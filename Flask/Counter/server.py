@@ -4,21 +4,26 @@ app.secret_key = 'a secret key'
 
 @app.route('/')
 def play():
-    return render_template('index.html')
-
-# Increases the count by 1 every time the 'click' button is pressed
-@app.route("/count", methods=["POST"])
-def submit():
     if 'count' not in session:
         session['count'] = 1
     else:
         session['count'] += 1
+    return render_template('index.html')
+
+# Increases the count by 1 by redirecting to the base page
+@app.route("/count", methods=["POST"])
+def plus_1():
+    return redirect('/')
+
+@app.route("/count2", methods=["POST"])
+def plus_2():
+    session['count'] += 1
     return redirect('/')
     
 # Resets to count to 0
 @app.route('/destroy_session', methods=["POST"])
 def destroy():
-    session['count'] = 0
+    session.pop('count')
     return redirect('/')
 
 # app.run(debug=True) should be the very last statement! 
