@@ -6,16 +6,16 @@ app = Flask(__name__)
 def play():
     return 'Hello World'
     
+# def level1():
+#     return render_template('index.html', num = 3)
+
+# def level2(num):
+#     return render_template('index.html', num = num)
+
 @app.route('/play')
-def level1():
-    return render_template('index.html', num = 3)
-
 @app.route('/play/<int:num>') 
-def level2(num):
-    return render_template('index.html', num = num)
-
 @app.route('/play/<int:num>/<color>') 
-def level3(color, num):
+def level3(color = 'blue', num = 3):
     return render_template('index.html', num = num, color = color)
 
 # app.run(debug=True) should be the very last statement! 
