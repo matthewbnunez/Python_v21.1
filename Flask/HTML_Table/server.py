@@ -14,9 +14,9 @@ def success():
     return "success <h1>this is a h1</h1><script>alert('hello!')</script>"
 
 
-@app.route('/hello/<name>/<int:times>')
-def hello(name, times):
-    return render_template("jinja.html", name=name, times=times)
+@app.route('/hello')
+def hello():
+    return render_template("index.html")
 
 
 @app.route('/template')
