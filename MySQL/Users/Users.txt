@@ -1,0 +1,13 @@
+INSERT INTO users (first_name, last_name, email, created_at, updated_at)
+VALUES('matthew', 'nunez', 'my.gmail', NOW(), NOW());
+INSERT INTO users (first_name, last_name, email, created_at, updated_at)
+VALUES('kobi', 'nickerson', 'he.hotmail', NOW(), NOW());
+INSERT INTO users (first_name, last_name, email, created_at, updated_at)
+VALUES('monte', 'honarchian', 'you.yohoo', NOW(), NOW());
+SELECT * FROM users;
+SELECT * FROM users WHERE email = 'my.gmail';
+SELECT * FROM users WHERE id = 3;
+UPDATE users SET last_name = 'Pancakes' WHERE id = 2;
+DELETE FROM users WHERE id = 2;
+SELECT * FROM users ORDER BY first_name;
+SELECT * FROM users ORDER BY first_name DESC;
