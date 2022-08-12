@@ -8,6 +8,15 @@ def basic():
     return redirect("/dojo")
 
 
+# DISPLAYS ALL Ninja
+@app.route("/ninjas/<int:id>")
+def read_all(id):
+    data = {
+        'id': id
+    }
+    dojo = Dojo.get_all_ninja(data)
+    return render_template("Dojo_Show.html", dojo=dojo)
+
 # DISPLAYS ALL Dojos
 @app.route("/dojo")
 def read_all_dojos():
