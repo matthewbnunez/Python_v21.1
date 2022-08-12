@@ -9,7 +9,7 @@
 <body>
     <h1>All Dojo</h1>
     {% for dojo in all_dojos %}
-        <p><a href="/ninjas/{{dojo.id}}">{{dojo.name}}</a></p>
+        <p><a href="/dojos/{{dojo.id}}">{{dojo.name}}</a></p>
     {% endfor %}
     <a href="/ninjas/new"> Add New ninja</a>
     

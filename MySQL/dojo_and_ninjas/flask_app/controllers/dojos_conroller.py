@@ -1,6 +1,6 @@
 from flask_app import app
 from flask import render_template, redirect, request
-from flask_app.models.dojo import Dojo
+from flask_app.models.dojo_model import Dojo
 
 
 @app.route("/")
@@ -9,7 +9,7 @@ def basic():
 
 
 # DISPLAYS ALL Ninja
-@app.route("/ninjas/<int:id>")
+@app.route("/dojos/<int:id>")
 def read_all(id):
     data = {
         'id': id

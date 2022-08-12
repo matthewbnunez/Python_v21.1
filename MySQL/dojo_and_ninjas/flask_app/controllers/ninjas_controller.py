@@ -1,7 +1,7 @@
 from flask_app import app
 from flask import render_template, redirect, request
-from flask_app.models.ninja import Ninja
-from flask_app.models.dojo import Dojo
+from flask_app.models.ninja_model import Ninja
+from flask_app.models.dojo_model import Dojo
 
 
 # CREATES A NEW Ninja
@@ -15,4 +15,4 @@ def new_ninja():
 @app.route('/ninjas/create', methods=["POST"])
 def createN():
     Ninja.create_ninja(request.form)
-    return redirect('/')
+    return redirect(f"/ninjas/{request.form['dojo_id']}")
