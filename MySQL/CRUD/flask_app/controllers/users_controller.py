@@ -29,7 +29,7 @@ def new_user():
 
 # SAVES NEW USER IN DB
 @app.route('/users/create', methods=["POST"])
-def create(id):
+def create():
     User.save(request.form)
     return redirect('/')
 

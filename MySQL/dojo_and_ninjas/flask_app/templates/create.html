@@ -9,14 +9,19 @@
 <body>
     <h1>Add new ninja</h1>
     <a href="/">Home</a>
-<form action="/ninjas/create" method="POST">
-    <p>First Name:</p>
-    <input type="text" name="first_name">
-    <p>Last Name:</p>
-    <input type="text" name="last_name">
-    <p>Age:</p>
-    <input type="text" name="age">
-    <button>Submit</button>
-</form> 
+    <form action="/ninjas/create" method="POST">
+        <select name="dojo_id">
+            {% for dojo in all_dojos %}
+            <option value="{{dojo.id}}">{{dojo.name}}</option>
+            {% endfor %}
+        </select>
+        <p>First Name:</p>
+        <input type="text" name="first_name">
+        <p>Last Name:</p>
+        <input type="text" name="last_name">
+        <p>Age:</p>
+        <input type="text" name="age">
+        <button>Submit</button>
+    </form>
 </body>
 </html>

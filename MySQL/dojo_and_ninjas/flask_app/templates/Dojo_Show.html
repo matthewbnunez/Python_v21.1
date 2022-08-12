@@ -8,6 +8,7 @@
 </head>
 <body>
     <h1>All Ninja</h1>
+    <a href="/">Home</a>
     {% for ninja in all_ninjas %}
         <table>
             <thead>
@@ -16,7 +17,6 @@
                     <th>First Name:</th>
                     <th>Last Name:</th>
                     <th>Age:</th>
-                    <th>Actions:</th>
                 </tr>
             </thead>
             <tbody>
@@ -25,14 +25,9 @@
                     <td>{{ninja.first_name}}</td>
                     <td>{{ninja.last_name}}</td>
                     <td>{{ninja.age}}</td>
-                    <td><a href="/ninjas/{{ninja.id}}">Show</a></td>
-                    <td><a href="/ninjas/{{ninja.id}}/edit">Edit</a></td>
-                    <td><a href="/ninjas/{{ninja.id}}/delete">Delete</a></td>
-
                 </tr>
             </tbody>
         </table>
         {% endfor %}
-        <a href="/ninjas/new"> Add New ninja</a>
 </body>
 </html>

@@ -1,4 +1,4 @@
-from flask_app.controllers import ninjas_controller
+from flask_app.controllers import dojos_conroller, ninjas_controller
 from flask_app import app
 
 # DEBUGGER
