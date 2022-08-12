@@ -9,6 +9,7 @@ class Dojo:
         self.created_at = data['created_at']
         self.updated_at = data['updated_at']
         
+        
     # DISPLAY ALL ninjas from a dojo
     @classmethod
     def get_all_ninja(cls, data):

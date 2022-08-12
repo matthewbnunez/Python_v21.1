@@ -17,6 +17,7 @@ def read_all(id):
     dojo = Dojo.get_all_ninja(data)
     return render_template("Dojo_Show.html", dojo=dojo)
 
+
 # DISPLAYS ALL Dojos
 @app.route("/dojo")
 def read_all_dojos():
