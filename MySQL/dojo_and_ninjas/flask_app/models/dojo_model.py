@@ -12,7 +12,7 @@ class Dojo:
     # READ ALL ninjas
     @classmethod
     def get_all_ninja(cls, data):
-        query = "SELECT * FROM dojos LEFT JOIN ninjas.dojo_id = dojo.id WHERE dojo.id = %(id)s;"
+        query = "SELECT * FROM dojos LEFT JOIN ninjas ON ninjas.dojo_id = dojos.id WHERE dojos.id = %(id)s;"
         results = connectToMySQL(DATABASE).query_db(query, data)
         if results:
             dojo_instance = cls(results[0])
@@ -21,9 +21,9 @@ class Dojo:
                 ninja_data = {
                     **row_in_db,
                     'id': row_in_db['ninjas.id'],
-                    'first_name': row_in_db['ninjas.first_name'], 
-                    'last_name': row_in_db['ninjas.last_name'],
-                    'age': row_in_db['ninjas.age'],
+                    # 'first_name': row_in_db['ninjas.first_name'], 
+                    # 'last_name': row_in_db['ninjas.last_name'],
+                    # 'age': row_in_db['ninjas.age'],
                     'created_at': row_in_db['ninjas.created_at'],
                     'updated_at': row_in_db['ninjas.updated_at']
                 }
