@@ -47,13 +47,6 @@ class Dojo:
 
     # ADD NEW dojo
     @classmethod
-    def save(cls, data):
-        query = "INSERT INTO dojos (name) VALUES ( %(name)s);"
-        return connectToMySQL(DATABASE).query_db( query, data )
-
-
-    # ADD NEW ninja
-    @classmethod
     def create_dojo(cls, data):
         query = "INSERT INTO dojos (name) VALUES ( %(name)s);"
         return connectToMySQL(DATABASE).query_db( query, data )
