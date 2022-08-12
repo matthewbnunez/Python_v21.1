@@ -9,7 +9,7 @@ class Dojo:
         self.created_at = data['created_at']
         self.updated_at = data['updated_at']
         
-    # READ ALL ninjas
+    # DISPLAY ALL ninjas from a dojo
     @classmethod
     def get_all_ninja(cls, data):
         query = "SELECT * FROM dojos LEFT JOIN ninjas ON ninjas.dojo_id = dojos.id WHERE dojos.id = %(id)s;"
