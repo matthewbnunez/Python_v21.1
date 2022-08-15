@@ -56,11 +56,11 @@ class User:
             potential_user = User.get_by_email(data)
             if potential_user:
                 is_vaild = False
-                flash("Account with this email already exists")
+                flash("Account with this email already exists", "reg")
         if len(user_data['password']) < 8:
             flash("Password must content at least 8 characters", "reg")
             is_vaild = False
         elif not user_data['password'] == user_data['confirm_password']:
-            flash("Password doesn't match")
+            flash("Password doesn't match", "reg")
             is_vaild = False
         return is_vaild
