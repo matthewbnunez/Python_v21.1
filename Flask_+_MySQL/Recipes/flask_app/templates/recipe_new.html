@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <title>Welcome Page</title>
+</head>
+<body>
+    <div class="container">
+        {% for message in get_flashed_messages()%}
+            <p class="text-danger">{{message}}</p>
+        {% endfor %}
+        <div class="d-flex justify-content-between">
+            <h3>Add a new recipe</h3>
+            <a href="/" class="btn btn-info">Home</a>
+        </div>
+        <form class="form" action="/recipes/create" method="POST">
+            <label for="name">Name</label>
+            <input type="text" name="name" id="name" class="form-control">
+            <div>
+                <label for="description">Description</label>
+                <textarea name="description" id="description" col="30" rows="5" class="form-control"></textarea>
+                <label for="instructions">Instructions</label>
+                <textarea name="instructions" id="instructions" col="30" rows="5" class="form-control"></textarea>
+            </div>
+            <label for="date_cooked">Date Cooked/Made</label>
+            <input type="date" name="date_cooked" id="date_cooked" class="form-control">
+            <div>
+                Under 30 minutes?
+                <label for="true">Yes</label>
+                <input type="radio" name="under_30min" id="true" value="1">
+                <label for="false">No</label>
+                <input type="radio" name="under_30min" id="false" value="0">
+            </div>
+            <button class="btn btn-primary"type="submit">Submit</button>
+        </form>
+    </div>
+</body>
+</html>
