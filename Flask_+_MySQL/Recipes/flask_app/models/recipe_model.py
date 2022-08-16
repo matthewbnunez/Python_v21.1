@@ -26,7 +26,7 @@ class Recipe:
     # Update recipe edit
     @classmethod
     def update(cls, data):
-        query = "UPDATE recipes SET name = %(name)s, description = %(description)s, instructions = %(instructions)s, date_cooked = %(date_cooked)s, under_30min = %(under_30min)s"
+        query = "UPDATE recipes SET name = %(name)s, description = %(description)s, instructions = %(instructions)s, date_cooked = %(date_cooked)s, under_30min = %(under_30min)s WHERE id = %(id)s;"
         return connectToMySQL(DATABASE).query_db(query, data)
 
 

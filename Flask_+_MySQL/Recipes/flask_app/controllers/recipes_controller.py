@@ -44,6 +44,7 @@ def delete_recipe(id):
     return redirect('/welcome')
 
 
+# Display one recipe
 @app.route('/recipes/<int:id>')
 def show_recipe(id):
     if not "user_id" in session:
@@ -56,12 +57,28 @@ def show_recipe(id):
     return render_template("recipe_one.html", recipe=recipe, user=user)
 
 
-# @app.route('/recipes/<int:id>/edit')
-# def edit_recipe(id):
-#     if not "user_id" in session:
-#         return redirect('/')
-#     data = {
-#             'id': id
-#     }
-#     recipe = Recipe.get_by_id(data)
-#     return render_template("recipe_one.html", recipe=recipe)
+# Edit recipe
+@app.route('/recipes/<int:id>/edit')
+def edit_recipe(id):
+    if not "user_id" in session:
+        return redirect('/')
+    data = {
+            'id': id
+    }
+    recipe = Recipe.get_by_id(data)
+    return render_template("recipe_edit.html", recipe=recipe)
+
+
+# Update Recipe
+@app.route('/recipes/<int:id>/update', methods=["POST"])
+def update_recipes(id):
+    if not "user_id" in session:
+        return redirect('/')
+    if not Recipe.validator(request.form):
+        return redirect(f'/recipes/{id}/edit')
+    data = {
+        **request.form,
+        'id': id
+    }
+    Recipe.update(data)
+    return redirect('/welcome')
