@@ -5,6 +5,7 @@ from flask_app.models.user_model import User
 from flask_app.models.recipe_model import Recipe
 
 
+# Display new recipe Page
 @app.route('/recipes/new')
 def new_recipes():
     if not "user_id" in session:
@@ -13,6 +14,7 @@ def new_recipes():
     return render_template('recipe_new.html', user=user)
 
 
+# Adds new recipe to DB
 @app.route('/recipes/create', methods=["POST"])
 def create_recipes():
     if not "user_id" in session:
@@ -25,3 +27,42 @@ def create_recipes():
     }
     Recipe.create_recipe(data)
     return redirect('/welcome')
+
+
+# Deletes recipe
+@app.route('/recipes/<int:id>/delete')
+def delete_recipe(id):
+    if not "user_id" in session:
+        return redirect('/')
+    data = {
+            'id': id
+    }
+    to_be_deleted = Recipe.get_by_id(data)
+    if not session['user_id'] == to_be_deleted.user_id:
+        flash("Quit trying to delete someone else's recipe")
+        return redirect('/')
+    Recipe.delete_recipe(data)
+    return redirect('/welcome')
+
+
+@app.route('/recipes/<int:id>')
+def show_recipe(id):
+    if not "user_id" in session:
+        return redirect('/')
+    data = {
+        'id': id
+    }
+    recipe = Recipe.get_by_id(data)
+    user = User.get_by_id({'id': session["user_id"]})
+    return render_template("recipe_one.html", recipe=recipe, user=user)
+
+
+# @app.route('/recipes/<int:id>/edit')
+# def edit_recipe(id):
+#     if not "user_id" in session:
+#         return redirect('/')
+#     data = {
+#             'id': id
+#     }
+#     recipe = Recipe.get_by_id(data)
+#     return render_template("recipe_one.html", recipe=recipe)

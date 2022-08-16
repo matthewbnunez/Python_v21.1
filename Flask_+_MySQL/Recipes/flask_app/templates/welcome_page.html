@@ -21,8 +21,8 @@
             <a href="/users/logout" class="btn btn-danger">Logout</a>
         </div>
     </div>
-    <h3>Recipe Repository</h3>
-    <table class="table table-striped">
+    <h3 class="m-5">Recipe Repository</h3>
+    <table class="table table-striped m-5">
         <thead>
             <tr>
                 <th>Name</th>
@@ -35,12 +35,18 @@
             {% for recipe in all_recipes %}
             <tr>
                 <td>{{recipe.name}}</td>
-                <td>{{recipe.under_30min}}</td>
+                <td>{% if recipe.under_30min == 1 %}Yes{%else%}No{%endif%}</td>
                 <td>{{recipe.chef.first_name}} {{recipe.chef.last_name}}</td>
+                <td><a href="/recipes/{{recipe.id}}">view</a>
+                {% if session['user_id'] == recipe.user_id %} |
+                <a href="/recipes/{{recipe.id}}/edit">Edit</a> |
+                <a href="/recipes/{{recipe.id}}/delete">Delete</a>
+                {% endif %}
+                </td>
             </tr>
             {%endfor%}
         </tbody>
     </table>
-    <a href="/recipes/new" class="btn btn-secondary">New Recipe</a>
+    <a href="/recipes/new" class="btn btn-secondary m-5">New Recipe</a>
 </body>
 </html>
