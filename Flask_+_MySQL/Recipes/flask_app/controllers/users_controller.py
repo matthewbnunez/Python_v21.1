@@ -63,3 +63,12 @@ def login():
         return redirect('/')
     session['user_id'] = user_from_db.id
     return redirect('/welcome')
+
+
+#
+@app.route('/my_recipes')
+def my_recipes():
+    if not 'user_id' in session:
+        return redirect('/')
+    user = User.get_by_id({'id': session['user_id']})
+    return render_template("my_recipes.html", user = user)

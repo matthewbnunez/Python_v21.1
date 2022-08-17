@@ -1,5 +1,6 @@
 from flask_app.config.mysqlconnection import connectToMySQL
 from flask_app import DATABASE
+from flask_app.models import recipe_model
 from flask import flash
 import re
 EMAIL_REGEX = re.compile(r"^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$")
@@ -36,11 +37,23 @@ class User:
     # Getting user by id
     @classmethod
     def get_by_id(cls, data):
-        query = "SELECT * FROM users WHERE id = %(id)s;"
+        query = "SELECT * FROM users LEFT JOIN recipes on users.id = recipes.user_id WHERE users.id = %(id)s"
         results = connectToMySQL(DATABASE).query_db(query, data)
         if len(results) < 1:
             return False
-        return cls(results[0])
+        user = cls(results[0])
+        list_of_recipes = []
+        for row in results:
+            recipe_data = {
+                **row,
+                'id': row['recipes.id'],
+                'created_at': row['recipes.created_at'],
+                'updated_at': row['recipes.updated_at']
+            }
+            this_recipe = recipe_model.Recipe(recipe_data)
+            list_of_recipes.append(this_recipe)
+        user.recipes_list = list_of_recipes
+        return user
 
 
 
