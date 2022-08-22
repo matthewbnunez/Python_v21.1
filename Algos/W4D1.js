@@ -23,15 +23,14 @@ const expected3 = 0;
  * @returns {number}
  */
 function recursiveSigma(num) {
-    if (num <= 0) {
-        return 0;
-    } else {
-        return Math.floor(recursiveSigma(num - 1) + num);
-    }
     //Your code here
     //Santize value?
     //Base case?
+    if (num <= 0) {
+        return 0;
+    }
     //Recursive call?
+    return Math.floor(recursiveSigma(num - 1) + num);
 }
 
 console.log(recursiveSigma(num1)); // 15
