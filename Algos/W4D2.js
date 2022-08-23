@@ -26,13 +26,25 @@ const expected3 = 1;
 function factorial(n) {
     //Your code here
     //Santize value?
+    n = Math.floor(n)
     //Base case?
-    if (Math.floor(n) == 0) {
+    if (n == 0) {
         return 1;
     }
     //Recursive return / call
-    return factorial(Math.floor(n - 1)) * Math.floor(n);
+    return factorial(n - 1) * n;
 }
+
+// function factorial(n) {
+//     //Your code here
+//     //Santize value?
+//     //Base case?
+//     if (Math.floor(n) == 0) {
+//         return 1;
+//     }
+//     //Recursive return / call
+//     return factorial(Math.floor(n - 1)) * Math.floor(n);
+// }
 
 /*****************************************************************************/
 console.log(factorial(num1)) // 6
