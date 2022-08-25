@@ -24,6 +24,9 @@ const expected5 = 3;
 const num6 = 8;
 const expected6 = 21;
 
+const num7 = 6000;
+const expected7 = 21;
+
 /**
  * Recursively finds the nth number in the fibonacci sequence.
  * - Time: O(?).
@@ -32,18 +35,38 @@ const expected6 = 21;
  * @returns {number} The fibonacci number at the given position.
  * memoization <------- 
  */
-function fibonacci(num) {
+// function fibonacci(num) {
+//     // edge case?
+//     // base case?
+//     if (num == 0) {
+//         return 0;
+//     }
+//     if (num == 1) {
+//         return 1;
+//     }
+//     // recursive call(s)
+//     return fibonacci(num - 1) + fibonacci(num - 2);
+// }
+
+function fibonacci(num, memo) {
     // edge case?
     // base case?
-    if (num == 0) {
-        return 0;
-    }
-    if (num == 1) {
-        return 1;
+    memo = memo || {};
+    if(memo[num]){
+        console.log("memoing something" + memo[num]);
+        return memo[num];
+    } else {
+        if (num == 0) {
+            return 0;
+        }
+        if (num == 1) {
+            return 1;
+        }
     }
     // recursive call(s)
-    return fibonacci(num - 1) + fibonacci(num - 2);
+    return memo[num] = fibonacci(num - 1, memo) + fibonacci(num - 2, memo);
 }
+
 
 console.log(fibonacci(num1)) // Expected: 0
 console.log(fibonacci(num2)) // Expected: 1
@@ -51,3 +74,4 @@ console.log(fibonacci(num3)) // Expected: 1
 console.log(fibonacci(num4)) // Expected: 2
 console.log(fibonacci(num5)) // Expected: 3
 console.log(fibonacci(num6)) // Expected: 21
+console.log(fibonacci(num7)) // Expected: 21
